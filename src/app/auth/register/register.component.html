@@ -1,0 +1,62 @@
+<div class="login-box">
+  <div class="valign-wrapper row">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="card-content">
+          <span class="card-title">Enter credentials</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email">Username</label>
+              <input type="text" class="validate" name="username" id="username" formControlName="username"/>
+            </div>
+            <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)" class="alert">
+              <div *ngIf="registerForm.controls['username'].errors.required">
+                Username is required.
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <label for="password">Password </label>
+              <input type="password" class="validate" name="password" id="password" formControlName="password"/>
+            </div>
+            <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="alert">
+              <div *ngIf="registerForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <label for="email">Email </label>
+              <input type="email" class="validate" name="email" id="email" formControlName="email"/>
+            </div>
+            <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="alert">
+              <div *ngIf="registerForm.controls['email'].errors.required">
+                Email is required.
+              </div>
+            </div>
+            <div class="input-field col s6">
+              <label for="fname">First Name</label>
+              <input type="text" class="validate" name="fname" id="fname" formControlName="fname"/>
+            </div>
+            <div *ngIf="registerForm.controls['fname'].invalid && (registerForm.controls['fname'].dirty || registerForm.controls['fname'].touched)" class="alert">
+              <div *ngIf="registerForm.controls['fname'].errors.required">
+                First Name is required.
+              </div>
+            </div>
+            <div class="input-field col s6">
+              <label for="lname">Last Name</label>
+              <input type="text" class="validate" name="lname" id="lname" formControlName="lname"/>
+            </div>
+            <div *ngIf="registerForm.controls['lname'].invalid && (registerForm.controls['lname'].dirty || registerForm.controls['lname'].touched)" class="alert">
+              <div *ngIf="registerForm.controls['lname'].errors.required">
+                Last Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <input type="reset" id="reset" class="btn-flat grey-text waves-effect" (click)="reset()">
+          <input type="submit" [disabled]="!registerForm.valid" class="btn green waves-effect waves-light" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

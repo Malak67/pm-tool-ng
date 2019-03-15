@@ -1,0 +1,52 @@
+<div *ngIf="pm" style="margin:20px;">
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Project {{pm.name}}</span>
+          <p>Company: {{pm.company}}</p>
+        </div>
+        <div class="card-action">
+          <button class="btn" *ngIf="!updating" (click)="toggleUpdate()">Update details</button>
+          <button class="btn" *ngIf="updating" (click)="toggleUpdate()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="updating" class="valign-wrapper row">
+    <div class="col card hoverable s6" style="margin-left: 10px;">
+      <form [formGroup]="pmForm" (ngSubmit)="onSubmit()">
+        <div class="card-content">
+          <span class="card-title">Update project</span>
+          <div class="row">
+            <div class="input-field col s6">
+              <label class="active" for="name">Name</label>
+              <input type="text" class="validate" name="name" id="name" formControlName="name"/>
+            </div>
+            <div *ngIf="pmForm.controls['name'].invalid && (pmForm.controls['name'].dirty || pmForm.controls['name'].touched)" class="alert">
+              <div *ngIf="pmForm.controls['name'].errors.required">
+                Name is required.
+              </div>
+            </div>
+            <div class="input-field col s6">
+              <label class="active" for="company">Company</label>
+              <input type="text" class="validate" name="company" id="company" formControlName="company"/>
+            </div>
+            <div *ngIf="pmForm.controls['company'].invalid && (pmForm.controls['company'].dirty || pmForm.controls['company'].touched)" class="alert">
+              <div *ngIf="pmForm.controls['company'].errors.required">
+                Company is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <input type="reset" id="reset" class="btn-flat grey-text waves-effect" (click)="reset()">
+          <input type="submit" [disabled]="!pmForm.valid" class="btn cyan waves-effect waves-light" value="Update">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<nav class="teal">
+  <div class="nav-wrapper">
+    <a *ngIf="user" [routerLink]="['/user', user]" class="brand-logo" style="margin-left:10px;">PM tool</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a [routerLink]="['/auth/projects']">Projects</a></li>
+      <li><a [routerLink]="['/auth/login']">Login</a></li>
+      <li><a [routerLink]="['/auth/register']">Register</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="row"></div>

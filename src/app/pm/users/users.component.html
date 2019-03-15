@@ -1,0 +1,16 @@
+<ul class="collection" *ngIf="users">
+  <li class="collection-item avatar" *ngFor="let user of users">
+    <i class="material-icons circle cyan darken-2">person</i>
+    <span class="title">Username: {{user.username}}</span>
+    <p>
+      <span>Email: </span>
+      <span>{{user.email}}</span>
+      <br/>
+      <span>First Name: </span>
+      <span>{{user.fname}}</span>
+      <br/>
+      <span>Last Name: </span>
+      <span>{{user.lname}}</span>
+    </p>
+  </li>
+</ul>

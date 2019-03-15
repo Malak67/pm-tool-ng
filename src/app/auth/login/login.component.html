@@ -1,0 +1,35 @@
+<div class="login-box">
+  <div class="valign-wrapper row">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card-content">
+          <span class="card-title">Enter credentials</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email">Username</label>
+              <input type="text" class="validate" name="username" id="username" formControlName="username"/>
+            </div>
+            <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" class="alert">
+              <div *ngIf="loginForm.controls['username'].errors.required">
+              Username is required.
+            </div>
+          </div>
+            <div class="input-field col s12">
+              <label for="password">Password </label>
+              <input type="password" class="validate" name="password" id="password" formControlName="password"/>
+            </div>
+            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert">
+              <div *ngIf="loginForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <input type="reset" id="reset" class="btn-flat grey-text waves-effect" (click)="reset()">
+          <input type="submit" [disabled]="!loginForm.valid" class="btn green waves-effect waves-light" value="Login">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
